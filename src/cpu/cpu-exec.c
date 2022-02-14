@@ -324,3 +324,9 @@ void cpu_exec(uint64_t n) {
       monitor_statistic();
   }
 }
+
+#if defined(__ISA_riscv32__) || defined(__ISA_riscv64__)
+uint32_t riscv_get_last_exec_inst() {
+    return prev_s->isa.instr.val;
+}
+#endif

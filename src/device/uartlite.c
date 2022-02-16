@@ -116,7 +116,9 @@ static void serial_io_handler(uint32_t offset, int len, bool is_write) {
 
 void init_uartlite() {
   serial_base = new_space(0xd);
+#ifdef CONFIG_HAS_PORT_IO
   add_pio_map("uartlite", CONFIG_UARTLITE_PORT, serial_base, 0xd, serial_io_handler);
+#endif
   add_mmio_map("uartlite", CONFIG_UARTLITE_MMIO, serial_base, 0xd, serial_io_handler);
 
 #ifdef CONFIG_UARTLITE_INPUT_FIFO

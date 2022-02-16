@@ -293,4 +293,9 @@ config ENABLE_INSTR_CNT
   bool
   default n if DISABLE_INSTR_CNT
   default y
+
+config FF_BP
+  depends on SHARE
+  bool "Enable oracle BP support for FF"
+  default n
 endmenu
